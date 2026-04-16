@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Trekking & Travel Nepal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="resources.css">
+</head>
+<body>
+
+    <div class="status-bar">
+        <div class="container flex-end">
+            <span id="time">Nepal Time: Loading...</span>
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="brand">
+                <img src="image/Trek & Travel.png" alt="Logo" class="brand-logo">
+                <h2 class="logo-text">Trekking & Travel Nepal</h2>
+            </a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="resources.html" class="active">Resources</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero resource-hero">
+        <div class="container">
+            <h1>Expert Resources</h1>
+            <p>Essential logistics, gear guides, and safety data.</p>
+        </div>
+    </section>
+
+    <main class="container content-padding">
+        
+        <div class="res-card">
+            <div class="res-img-box">
+                <img src="image/gear.jpg" alt="Gear Guide" onerror="this.src='https://images.unsplash.com/photo-1523987355523-c7b5b0dd90a7'">
+            </div>
+            <div class="res-content">
+                <h3>Packing & Gear</h3>
+                <p>Complete list of equipment for high-altitude Himalayan trekking.</p>
+                <div class="button-row">
+                    <button class="btn toggle-btn">View Details</button>
+                    <button class="btn alert-btn" data-info="Weight limit for domestic flights is 15kg total!">Check Weight</button>
+                </div>
+                <div class="details-panel">
+                    <ul>
+                        <li>Down Jacket (-15°C Minimum)</li>
+                        <li>High-UV Polarized Sunglasses</li>
+                        <li>Thermal Base Layers (Merino Wool)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="res-card">
+            <div class="res-img-box">
+                <img src="image/health and safety.webp" alt="Safety" onerror="this.src='https://images.unsplash.com/photo-1501503060443-ef4ad24ff86b'">
+            </div>
+            <div class="res-content">
+                <h3>Health & Safety</h3>
+                <p>Altitude sickness protocols and emergency contact information.</p>
+                <div class="button-row">
+                    <button class="btn toggle-btn">View Details</button>
+                    <button class="btn alert-btn" data-info="Ensure your insurance covers helicopter rescue up to 6,000m.">Insurance Tip</button>
+                </div>
+                <div class="details-panel">
+                    <ul>
+                        <li>Emergency Rescue: 1144</li>
+                        <li>Himalayan Rescue Association: 4440292</li>
+                        <li>Carry Diamox for AMS prevention</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <p>© <span id="year"></span> Trekking & Travel Nepal </p>
+    </footer>
+
+    <div id="cookie" class="cookie-pill">
+        <div class="cookie-content">
+            <span>🍪</span>
+            <p>This project uses cookies to improve your user experience.</p>
+        </div>
+        <button id="accept" class="cookie-confirm">Accept</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="resources.js"></script>
+</body>
+</html>
