@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Training and preparation for trekking in Nepal with fitness, packing, and beginner tips.">
+  <meta name="keywords" content="training, preparation, trekking fitness, packing guide, beginner tips">
+  <title>Training & Preparation - Trekking & Travel Nepal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="training.css">
+</head>
+<body>
+  <header>
+    <div class="container nav-wrap">
+      <a class="brand" id="brand-logo" href="#">
+        <div class="brand-icon">TN</div>
+        Trekking & Travel Nepal
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="trekking-guides.html">Trekking Guides</a></li>
+          <li><a href="training.html">Training</a></li>
+          <li><a href="safety.html">Safety</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </nav>
+      <div class="header-time" id="header-time">Nepal time loading...</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-body">
+        <p class="eyebrow">Training & Preparation</p>
+        <h1>Train Strong for Himalayan Trails</h1>
+        <p class="section-subtitle">Choose cardio, strength, or flexibility plans designed to build endurance, power, and recovery for mountain trekking.</p>
+        <div class="hero-actions">
+          <button id="plan-btn-hero" class="btn-primary">Show my training plan</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container">
+        <h2 class="section-title">Fitness Training</h2>
+        <p class="section-subtitle">Build the endurance and strength needed for multi-day mountain trails.</p>
+        <div class="grid-3">
+          <article class="feature-card">
+            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=800&q=80" alt="Cardio training">
+            <div class="card-badge">
+              <img src="https://images.unsplash.com/photo-1520106213275-7d6bc4551b40?auto=format&fit=crop&w=120&q=80" alt="Cardio icon">
+            </div>
+            <h3>Cardio workouts</h3>
+            <p>Hiking, stair climbing, and interval training improve trekking stamina.</p>
+            <button class="learn-more" data-plan="cardio">View cardio plan</button>
+          </article>
+          <article class="feature-card">
+            <img src="https://images.unsplash.com/photo-1517832207067-4db24a2ae47c?auto=format&fit=crop&w=800&q=80" alt="Strength training">
+            <h3>Strength training</h3>
+            <p>Build leg power, core stability, and back endurance so you handle steep climbs and a loaded pack with confidence.</p>
+            <button class="learn-more" data-plan="strength">View strength plan</button>
+          </article>
+          <article class="feature-card">
+            <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=800&q=80" alt="Stretching">
+            <h3>Flexibility</h3>
+            <p>Daily stretching and mobility routines keep your hips open, reduce soreness, and help your body recover faster on the trail.</p>
+            <button class="learn-more" data-plan="flexibility">View flexibility plan</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container">
+        <h2 class="section-title">Training Focus</h2>
+        <p class="section-subtitle">Pick the exact workout type you want and open the matching plan instantly.</p>
+        <div class="plan-note">
+          <p>Tap cardio, strength, or flexibility to see the focused routine for that training goal.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="modal-overlay hidden" id="plan-modal">
+      <div class="modal-card">
+        <button class="close-modal" id="close-modal" aria-label="Close plan details">×</button>
+        <div class="modal-image">
+          <img id="modal-image" src="" alt="Plan image">
+        </div>
+        <h2 id="modal-title">Plan details</h2>
+        <div id="modal-description" class="modal-description">
+          Select a plan to view specific training guidance.
+        </div>
+        <h3 id="modal-subtitle" class="modal-subtitle">What to focus on</h3>
+        <ul id="modal-list"></ul>
+        <div id="modal-details" class="modal-details"></div>
+      </div>
+    </div>
+
+    <section class="section reveal accent">
+      <div class="container split">
+        <div>
+          <h2 class="section-title">Packing Guide</h2>
+          <p class="section-subtitle">Carry the essentials while staying light and prepared for mountain conditions.</p>
+          <ul class="feature-list">
+            <li>Layered clothing, waterproof jacket, warm sleeping bag and quality boots.</li>
+            <li>Navigation tools, headlamp, water treatment, and spare batteries.</li>
+            <li>First aid kit, sunscreen, sunglasses, and compact emergency supplies.</li>
+          </ul>
+          <div class="panel-group">
+            <div class="panel-item">
+              <strong>Practical skills</strong>
+              <p>Practice packing, map reading, and pacing before you leave.</p>
+            </div>
+            <div class="panel-item">
+              <strong>Beginner tips</strong>
+              <p>Start with shorter hikes and build up to longer, high-altitude days.</p>
+            </div>
+          </div>
+        </div>
+        <div class="image-panel">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Packing gear">
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container">
+        <h2 class="section-title">Training Planner</h2>
+        <p class="section-subtitle">Choose your trek duration and see the right training focus.</p>
+        <div class="planner-card">
+          <div class="planner-control">
+            <label for="trek-length">Trek duration</label>
+            <select id="trek-length">
+              <option value="weekend">Weekend hike</option>
+              <option value="7-days">7-day trek</option>
+              <option value="14-days">14+ day expedition</option>
+            </select>
+          </div>
+          <button id="plan-btn" class="btn-secondary">Show my plan</button>
+          <div id="plan-result" class="plan-result">
+            Pick your trek length and get a tailored cardio, strength, and flexibility routine for your route.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal statistics">
+      <div class="container grid-3">
+        <article class="stat-card">
+          <h3>7+</h3>
+          <p>Days of preparation tips for every trek.</p>
+        </article>
+        <article class="stat-card">
+          <h3>50+</h3>
+          <p>Essential items recommended for mountain travel.</p>
+        </article>
+        <article class="stat-card">
+          <h3 id="nepal-time">Nepal time</h3>
+          <p>Local time to help you plan your itinerary.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <p>Training and preparation guidance for Himalayan trekking.</p>
+      <div class="footer-bottom">© <span class="current-year"></span> Trekking & Travel Nepal. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="training.js"></script>
+</body>
+</html>
