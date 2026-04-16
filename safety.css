@@ -18,13 +18,39 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   color: var(--text);
-  background: linear-gradient(180deg, #f6f9fc 0%, #eef4fb 100%);
+  background: linear-gradient(180deg, #f4f8fc 0%, #eef4fb 100%);
 }
 
 img {
   width: 100%;
   display: block;
   border-radius: 20px;
+}
+
+.hero {
+  min-height: 76vh;
+  display: flex;
+  align-items: center;
+  background: linear-gradient(180deg, rgba(238, 244, 251, 0.95), rgba(255, 255, 255, 0.95));
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  opacity: 0.16;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-body {
+  max-width: 680px;
+  padding: 5rem 0;
+  position: relative;
+  z-index: 1;
 }
 
 a {
@@ -107,11 +133,16 @@ nav a.active {
   align-items: center;
   background-image: radial-gradient(circle at top right, rgba(255, 111, 60, 0.18), transparent 28%),
     linear-gradient(180deg, #eef7fc 0%, #ffffff 65%);
+  position: relative;
+  overflow: hidden;
 }
+
 
 .hero-body {
   max-width: 680px;
   padding: 5rem 0;
+  position: relative;
+  z-index: 1;
 }
 
 .eyebrow {
@@ -191,8 +222,97 @@ nav a.active {
   line-height: 1.8;
 }
 
+.details-section {
+  max-height: 0;
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  transition: max-height 0.5s ease, opacity 0.4s ease;
+  margin-top: 2rem;
+}
+
+.details-section.active {
+  max-height: 2400px;
+  opacity: 1;
+  visibility: visible;
+}
+
+.details-section .container {
+  background: rgba(255, 255, 255, 0.96);
+  border-radius: 28px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.details-section h2 {
+  margin-top: 0;
+}
+
+.details-section ul {
+  padding-left: 1.2rem;
+  margin: 0.9rem 0 1.4rem;
+}
+
+.details-section li {
+  margin-bottom: 0.7rem;
+}
+
+.btn-secondary {
+  background: rgba(31, 63, 92, 0.08);
+  color: var(--primary-strong);
+  border: none;
+  padding: 0.85rem 1.4rem;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+  background: rgba(31, 63, 92, 0.14);
+}
+
+.image-note {
+  margin: 1rem 0 0;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 16px;
+}
+
+.video-controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
 .accent {
   background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.accent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  background-size: cover;
+  opacity: 0.08;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.accent .container {
+  position: relative;
+  z-index: 1;
 }
 
 .split {
@@ -227,9 +347,36 @@ nav a.active {
   overflow: hidden;
 }
 
+.media-section {
+  background: linear-gradient(145deg, #f0f7fc, #ffffff);
+  position: relative;
+  overflow: hidden;
+}
+
+.media-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80') center/cover no-repeat;
+  background-size: cover;
+  opacity: 0.06;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.media-section .container {
+  position: relative;
+  z-index: 1;
+}
+
 .media-section .video-panel {
   display: grid;
   gap: 1rem;
+  position: relative;
+  z-index: 2;
 }
 
 .media-panel img {
@@ -244,13 +391,16 @@ nav a.active {
   overflow: hidden;
   border-radius: 22px;
   box-shadow: var(--shadow);
+  background: #000;
 }
 
-.video-wrapper img,
-.video-wrapper iframe {
-  width: 100%;
+.video-wrapper video {
+  width: 70%;
+  max-width: 480px;
+  height: 50%;
+  margin: 0 auto;
   display: block;
-  border-radius: 22px;
+  border-radius: 16px;
 }
 
 .video-caption {

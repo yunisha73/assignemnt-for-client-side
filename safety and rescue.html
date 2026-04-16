@@ -45,22 +45,31 @@
     </section>
 
     <section class="section reveal">
-      <div class="container grid-3">
+      <div class="container grid-3 feature-grid">
         <article class="feature-card">
-          <img src="https://images.unsplash.com/photo-1520962914626-5b2559d0940f?auto=format&fit=crop&w=900&q=80" alt="Mountain rescue">
-          <h3>Altitude awareness</h3>
-          <p>Identify early signs of AMS and descend quickly to prevent serious complications.</p>
+          <img src="images/altitude.jpg" alt="Altitude awareness">
+          <h3>Altitude Awareness</h3>
+          <p>Learn about altitude sickness and how to stay safe in the high mountains.</p>
+          <button class="btn-primary toggle-btn" data-detail="altitude">Learn More</button>
         </article>
         <article class="feature-card">
-          <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80" alt="Emergency kit">
+          <img src="images/kit.jpg" alt="Emergency kit">
           <h3>Emergency kit</h3>
-          <p>Keep first aid, communication tools, and warm layers within easy reach on every day hike.</p>
+          <p>Keep first aid, communication tools, and warm layers within easy reach on every hike.</p>
+          <button class="btn-primary toggle-btn" data-detail="emergency">Learn More</button>
         </article>
         <article class="feature-card">
-          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80" alt="Team hiking">
+          <img src="images/team.jpg" alt="Team communication">
           <h3>Team communication</h3>
           <p>Share your route, use radios, and confirm checkpoints with your group before departure.</p>
+          <button class="btn-primary toggle-btn" data-detail="team">Learn More</button>
         </article>
+      </div>
+
+      <div id="infoDetails" class="details-section">
+        <div class="container">
+          <div class="details-content"></div>
+        </div>
       </div>
     </section>
 
@@ -86,7 +95,7 @@
           </div>
         </div>
         <div class="image-panel">
-          <img src="https://images.unsplash.com/photo-1526481280690-82ef2d2a8e2d?auto=format&fit=crop&w=900&q=80" alt="Safety planning">
+          <img src="images/safety.png" alt="Safety planning">
         </div>
       </div>
     </section>
@@ -100,12 +109,18 @@
         </div>
         <div class="video-panel">
           <div class="media-panel">
-            <img src="https://cdn.pixabay.com/photo/2017/05/10/14/23/helicopter-2301616_1280.jpg" alt="Helicopter rescue in snowy mountains">
+            <img src="images/mt.everest.jpg" alt="Helicopter rescue in snowy mountains">
+            <p class="image-note">Rescue of climbers on Mt. Everest during an earthquake.</p>
           </div>
           <div class="video-wrapper">
-            <img src="https://cdn.pixabay.com/photo/2016/10/26/02/02/helicopter-1777994_1280.jpg" alt="Helicopter rescue operation">
-            <p class="video-caption">A high-mountain rescue helicopter is ready to help trekkers and tourists in remote Everest terrain.</p>
-            <p class="video-link"><a href="https://www.youtube.com/results?search_query=everest+helicopter+rescue" target="_blank" rel="noopener">Watch Everest helicopter rescue videos</a></p>
+            <video id="rescueVideo" muted loop playsinline poster="images/mt.everest.jpg">
+              <source src="videos/helicopter.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-controls">
+              <button id="playBtn" class="btn-secondary" type="button">Play video</button>
+            </div>
+            <p class="video-caption">Helicopter rescue in action during mountain emergency operations.</p>
           </div>
         </div>
       </div>
