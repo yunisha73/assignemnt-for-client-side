@@ -1,163 +1,122 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Explore Hidden Nepal</title>
-  <link rel="stylesheet" href="style.css">
-
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-    }
-
-    header {
-      background: #1e3d59;
-      color: white;
-      padding: 15px;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .hero {
-      height: 80vh;
-      background: url('https://images.unsplash.com/photo-1544731612-de7f96afe55f') no-repeat center/cover;
-      color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .hero h2 {
-      font-size: 3em;
-      text-shadow: 2px 2px 5px black;
-    }
-
-    .hero button {
-      padding: 10px 20px;
-      font-size: 18px;
-      border: none;
-      background: orange;
-      cursor: pointer;
-    }
-
-    .hero button:hover {
-      background: darkorange;
-    }
-
-    .section {
-      padding: 40px;
-      text-align: center;
-    }
-
-    .cards {
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-    }
-
-    .card {
-      width: 250px;
-      margin: 15px;
-      padding: 20px;
-      border-radius: 10px;
-      background: #f4f4f4;
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: scale(1.05);
-    }
-
-    footer {
-      background: #1e3d59;
-      color: white;
-      text-align: center;
-      padding: 10px;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trekking & Travel Nepal | Guides & Resources</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
+<div class="status-bar">
+    <div class="container">
+        <span id="live-time">Nepal Time: Loading...</span>
+    </div>
+</div>
+
 <header>
-  <h1>Explore Hidden Nepal</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="destinations.html">Destinations</a>
-    <a href="activities.html">Activities</a>
-    <a href="guide.html">Travel Guide</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+    <div class="container nav-wrap">
+        <a class="brand" href="index.html">
+            <img src="image/Trek & Travel.png" alt="Logo" class="main-logo">
+            <span class="brand-name">Trekking & Travel Nepal</span>
+        </a>
+
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="trekking-guides.html">Trekking Guides</a></li>
+                <li><a href="training.html">Training</a></li>
+                <li><a href="safety.html">Safety</a></li>
+                <li><a href="resources.html">Resources</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
-<!-- HERO SECTION -->
-<section class="hero">
-  <h2>Discover Nepal Beyond the Crowds</h2>
-  <button onclick="goToDestinations()">Explore Destinations</button>
+<div class="resource-ticker">
+    <div class="container ticker-flex">
+        <div class="pill-button">
+            <img src="image/Trek & Travel.png" class="mini-logo" alt="Logo">
+            <span>Trekking Guide 2026</span>
+        </div>
+        <div class="pill-button">
+            <img src="image/Trek & Travel.png" class="mini-logo" alt="Logo">
+            <span>Expert Resources</span>
+        </div>
+        <div class="pill-button">
+            <img src="image/Trek & Travel.png" class="mini-logo" alt="Logo">
+            <span>Safety Protocols</span>
+        </div>
+    </div>
+</div>
+
+<main>
+    <section class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="video.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-body">
+            <h1 class="hero-title">Higher Peaks, Deeper Stories.</h1>
+            <p class="hero-subtitle">Expert Guides. Essential Resources. Your Ultimate Himalayan Blueprint.</p>
+            <div class="hero-actions">
+                <a href="trekking-guides.html" class="btn btn-primary">Explore Guides</a>
+                <a href="training.html" class="btn btn-secondary">Get Trained</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section container">
+    <div class="grid-3">
+        <article class="card featured-card">
+            <span class="badge">Most Popular</span>
+            <div class="card-img-container">
+                <img src="image/everest base camp.webp" alt="Everest Base Camp">
+            </div>
+            <div class="card-body">
+                <h3>Everest Base Camp</h3>
+                <p>14 days · Difficult. The ultimate trek to the foot of the world's highest peak.</p>
+                <a href="everest-base-camp.html" class="link-btn">View full guide →</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-img-container">
+                <img src="https://images.unsplash.com/photo-1544735716-392fe2489ffa" alt="Annapurna Circuit">
+            </div>
+            <div class="card-body">
+                <h3>Annapurna Circuit</h3>
+                <p>18 days · Intermediate. A classic journey through diverse climates and cultures.</p>
+                <a href="annapurna-circuit.html" class="link-btn">View full guide →</a>
+            </div>
+        </article>
+
+        <article class="card">
+            <div class="card-img-container">
+                <img src="image/q_70.webp" alt="Langtang Valley">
+            </div>
+            <div class="card-body">
+                <h3>Langtang Valley</h3>
+                <p>10 days · Moderate. Experience the "Valley of Glaciers" and Tamang heritage.</p>
+                <a href="langtang-valley.html" class="link-btn">View full guide →</a>
+            </div>
+        </article>
+    </div>
 </section>
-
-<!-- FEATURED DESTINATIONS -->
-<section class="section">
-  <h2>Hidden Destinations</h2>
-
-  <div class="cards">
-    <div class="card" onclick="showInfo('khopra')">
-      <h3>Khopra Danda</h3>
-      <p>Peaceful Himalayan ridge trek.</p>
-    </div>
-
-    <div class="card" onclick="showInfo('mohare')">
-      <h3>Mohare Danda</h3>
-      <p>Eco-friendly community trek.</p>
-    </div>
-
-    <div class="card" onclick="showInfo('tsum')">
-      <h3>Tsum Valley</h3>
-      <p>Remote spiritual valley.</p>
-    </div>
-  </div>
-
-  <p id="info" style="margin-top:20px; font-weight:bold;"></p>
-</section>
+</main>
 
 <footer>
-  <p>© 2026 Explore Hidden Nepal</p>
+    <div class="container">
+        <p>© <span id="year"></span> Trekking & Travel Nepal. All Rights Reserved.</p>
+    </div>
 </footer>
 
-<script>
-function goToDestinations() {
-  window.location.href = "destinations.html";
-}
-
-function showInfo(place) {
-  let text = "";
-
-  if (place === "khopra") {
-    text = "Khopra Danda offers stunning views of Dhaulagiri with fewer tourists.";
-  } 
-  else if (place === "mohare") {
-    text = "Mohare Danda supports local communities and eco-tourism.";
-  } 
-  else if (place === "tsum") {
-    text = "Tsum Valley is rich in Tibetan culture and untouched beauty.";
-  }
-
-  document.getElementById("info").innerHTML = text;
-}
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>

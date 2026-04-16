@@ -1,0 +1,248 @@
+﻿/* ============================================================
+   1. DESIGN SYSTEM & MODERN RESET
+   ============================================================ */
+:root {
+  --primary: #0f172a;        /* Deep Himalayan Navy */
+  --secondary: #e11d48;      /* Modern Crimson for "Action" and "Popular" */
+  --bg-light: #f8fafc;       
+  --bg-grey: #f1f5f9;        /* Grey for Ticker Bar */
+  --white: #ffffff;
+  
+  --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-md: 0 10px 25px -5px rgba(0,0,0,0.1);
+  --shadow-pop: 0 20px 40px rgba(0,0,0,0.2);
+  
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --bounce: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-light);
+  color: var(--primary);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ============================================================
+   2. HEADER & LOGO "POP"
+   ============================================================ */
+header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.nav-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 12px;
+}
+
+.main-logo {
+  height: 50px;
+  width: auto;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+  transition: var(--bounce);
+}
+
+.brand:hover .main-logo {
+  transform: scale(1.1) rotate(-3deg);
+  filter: drop-shadow(0 10px 15px rgba(0,0,0,0.2));
+}
+
+.brand-name {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.5px;
+}
+
+nav ul {
+  display: flex;
+  gap: 20px;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--primary);
+  font-weight: 500;
+  font-size: 0.85rem;
+  transition: var(--transition);
+}
+
+nav a:hover {
+  color: var(--secondary);
+}
+
+/* ============================================================
+   3. THE PILL-POP RESOURCE BAR (Matching Image)
+   ============================================================ */
+.resource-ticker {
+  background: var(--bg-grey);
+  padding: 15px 0;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.ticker-flex {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.pill-button {
+  background: white;
+  padding: 8px 22px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.pill-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.mini-logo {
+  height: 22px;
+  margin-right: 10px;
+}
+
+.pill-button span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #475569;
+}
+
+/* ============================================================
+   4. STATUS BAR & HERO
+   ============================================================ */
+.status-bar {
+  background: var(--primary);
+  color: white;
+  padding: 6px 0;
+  font-size: 0.75rem;
+  text-align: right;
+}
+
+.hero {
+  position: relative;
+  height: 75vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  min-width: 100%;
+  min-height: 100%;
+  z-index: -1;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+
+.hero-body {
+  position: relative;
+  z-index: 10;
+  max-width: 900px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+/* ============================================================
+   5. TREKKING CARDS & EBC HIGHLIGHT
+   ============================================================ */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
+  padding: 60px 0;
+  align-items: stretch;
+}
+
+.card {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: var(--transition);
+}
+
+/* Highlight for Mt. Everest Base Camp */
+.featured-card {
+  position: relative;
+  border: 2px solid var(--secondary);
+  transform: scale(1.03);
+  z-index: 5;
+}
+
+.badge {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background: var(--secondary);
+  color: white;
+  padding: 5px 15px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 50px;
+  z-index: 10;
+  box-shadow: 0 4px 10px rgba(225, 29, 72, 0.4);
+}
+
+/* IMAGE ALIGNMENT FIX */
+.card-img-container {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Perfect uniform alignment */
+  overflow: hidden;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
