@@ -185,3 +185,30 @@ window.addEventListener('load', () => {
 
 window.addEventListener('scroll', revealOnScroll);
 setInterval(refreshTime, 1000);
+
+const form = document.getElementById("contact-form");
+const formMessage = document.getElementById("form-message");
+
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+
+    if (name === "" || email === "") {
+      formMessage.textContent = "Please fill in all fields.";
+      formMessage.style.color = "red";
+      return;
+    }
+
+    if (!email.includes("@")) {
+      formMessage.textContent = "Enter a valid email.";
+      formMessage.style.color = "red";
+      return;
+    }
+
+    formMessage.textContent = "Your training plan request has been sent!";
+      formMessage.style.color = "green";
+  });
+}
