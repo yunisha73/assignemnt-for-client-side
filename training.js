@@ -14,6 +14,55 @@ const modalList = document.getElementById('modal-list');
 const modalImage = document.getElementById('modal-image');
 const learnButtons = document.querySelectorAll('.learn-more');
 
+// Cookie Consent Functions
+function setCookie(name, value, days = 365) {
+  const date = new Date();
+  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+  const expires = "expires=" + date.toUTCString();
+  document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+}
+
+function getCookie(name) {
+  const nameEQ = name + "=";
+  const cookies = document.cookie.split(';');
+  for (let i = 0; i < cookies.length; i++) {
+    let cookie = cookies[i].trim();
+    if (cookie.indexOf(nameEQ) === 0) {
+      return decodeURIComponent(cookie.substring(nameEQ.length));
+    }
+  }
+  return null;
+}
+
+function deleteCookie(name) {
+  setCookie(name, "", -1);
+}
+
+function showCookieConsent() {
+  const consentBanner = document.getElementById('cookie-consent');
+  const hasConsent = getCookie('cookieConsent');
+  if (!hasConsent && consentBanner) {
+    consentBanner.classList.remove('hidden');
+  }
+}
+
+function hideCookieConsent() {
+  const consentBanner = document.getElementById('cookie-consent');
+  if (consentBanner) {
+    consentBanner.classList.add('hidden');
+  }
+}
+
+function acceptCookies() {
+  setCookie('cookieConsent', 'accepted', 365);
+  hideCookieConsent();
+}
+
+function declineCookies() {
+  setCookie('cookieConsent', 'declined', 365);
+  hideCookieConsent();
+}
+
 function updateYear() {
   const year = new Date().getFullYear();
   if (currentYear) currentYear.textContent = year;
@@ -181,6 +230,13 @@ window.addEventListener('load', () => {
   setupLogoModal();
   setupLearnButtons();
   revealOnScroll();
+  showCookieConsent();
+  
+  // Setup cookie consent buttons
+  const acceptBtn = document.getElementById('cookie-accept');
+  const declineBtn = document.getElementById('cookie-decline');
+  if (acceptBtn) acceptBtn.addEventListener('click', acceptCookies);
+  if (declineBtn) declineBtn.addEventListener('click', declineCookies);
 });
 
 window.addEventListener('scroll', revealOnScroll);
