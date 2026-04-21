@@ -50,10 +50,8 @@
         <p class="section-subtitle">Build the endurance and strength needed for multi-day mountain trails.</p>
         <div class="grid-3">
           <article class="feature-card">
-            <img src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=800&q=80" alt="Cardio training">
-            <div class="card-badge">
-              <img src="https://images.unsplash.com/photo-1520106213275-7d6bc4551b40?auto=format&fit=crop&w=120&q=80" alt="Cardio icon">
-            </div>
+            <img src="pictures/cardio.jpg" alt="Cardio training">
+           
             <h3>Cardio workouts</h3>
             <p>Hiking, stair climbing, and interval training improve trekking stamina.</p>
             <button class="learn-more" data-plan="cardio">View cardio plan</button>
@@ -169,19 +167,43 @@
     <h2 class="section-title">Get a Personal Training Plan</h2>
     <p class="section-subtitle">Fill in your details and we’ll suggest a plan for your trek.</p>
 
-    <form id="contact-form" class="planner-card">
-      <input type="text" id="name" placeholder="Your name">
-      <input type="email" id="email" placeholder="Your email">
-      <select id="experience">
-        <option value="">Select experience level</option>
-        <option>Beginner</option>
-        <option>Intermediate</option>
-        <option>Advanced</option>
-      </select>
-      <button type="submit" class="btn-primary">Submit</button>
+    <form id="contact-form" class="form-container">
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <div class="input-wrapper">
+          <input type="text" id="name" placeholder="Enter your name" autocomplete="name" required>
+          <span class="input-icon">👤</span>
+          <span class="field-feedback"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <div class="input-wrapper">
+          <input type="email" id="email" placeholder="your@email.com" autocomplete="email" required>
+          <span class="input-icon">✉️</span>
+          <span class="field-feedback"></span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="experience">Experience Level</label>
+        <div class="input-wrapper">
+          <select id="experience" required>
+            <option value="">Select your level</option>
+            <option value="beginner">Beginner - New to trekking</option>
+            <option value="intermediate">Intermediate - Some experience</option>
+            <option value="advanced">Advanced - Regular trekker</option>
+          </select>
+          <span class="select-icon">⛏️</span>
+          <span class="field-feedback"></span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary btn-submit">Get My Training Plan</button>
     </form>
 
-    <div id="form-message" class="plan-result"></div>
+    <div id="form-message" class="form-feedback-message"></div>
   </div>
 </section>
   </main>

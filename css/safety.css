@@ -27,14 +27,7 @@ img {
   border-radius: 20px;
 }
 
-.hero {
-  min-height: 76vh;
-  display: flex;
-  align-items: center;
-  background: linear-gradient(180deg, rgba(238, 244, 251, 0.95), rgba(255, 255, 255, 0.95));
-  position: relative;
-  overflow: hidden;
-}
+
 
 .hero::before {
   content: '';
@@ -143,12 +136,7 @@ nav a.active {
 }
 
 
-.hero-body {
-  max-width: 680px;
-  padding: 5rem 0;
-  position: relative;
-  z-index: 1;
-}
+
 
 .eyebrow {
   margin: 0 0 1rem;
@@ -199,11 +187,6 @@ nav a.active {
 .stats-card,
 .checklist-grid button {
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.feature-card,
-.plan-result,
-.panel-item {
   background: var(--surface);
   border-radius: 26px;
   padding: 1.6rem;
@@ -282,12 +265,6 @@ nav a.active {
   color: var(--muted);
 }
 
-.video-wrapper video {
-  width: 100%;
-  height: auto;
-  display: block;
-  border-radius: 16px;
-}
 
 .video-controls {
   display: flex;

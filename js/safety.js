@@ -1,13 +1,16 @@
-const currentYear = document.querySelector('.current-year');
-const headerTime = document.getElementById('header-time');
-const checklistButtons = document.querySelectorAll('.check-item');
-const checklistResult = document.getElementById('checklist-result');
-const checklistBtn = document.getElementById('checklist-btn');
-const toggleButtons = document.querySelectorAll('.toggle-btn');
-const infoDetails = document.getElementById('infoDetails');
-const detailsContent = document.querySelector('.details-content');
-const playBtn = document.getElementById('playBtn');
-const rescueVideo = document.getElementById('rescueVideo');
+// DOM Elements
+const elements = {
+  currentYear: document.querySelector('.current-year'),
+  headerTime: document.getElementById('header-time'),
+  checklistButtons: document.querySelectorAll('.check-item'),
+  checklistResult: document.getElementById('checklist-result'),
+  checklistBtn: document.getElementById('checklist-btn'),
+  toggleButtons: document.querySelectorAll('.toggle-btn'),
+  infoDetails: document.getElementById('infoDetails'),
+  detailsContent: document.querySelector('.details-content'),
+  playBtn: document.getElementById('playBtn'),
+  rescueVideo: document.getElementById('rescueVideo'),
+};
 
 const detailsData = {
   altitude: `
@@ -83,7 +86,7 @@ const detailsData = {
 };
 
 function updateYear() {
-  if (currentYear) currentYear.textContent = new Date().getFullYear();
+  if (elements.currentYear) elements.currentYear.textContent = new Date().getFullYear();
 }
 
 function getNepalTime() {
@@ -98,26 +101,26 @@ function getNepalTime() {
 }
 
 function refreshTime() {
-  if (headerTime) headerTime.textContent = `Kathmandu: ${getNepalTime()}`;
+  if (elements.headerTime) elements.headerTime.textContent = `Kathmandu: ${getNepalTime()}`;
 }
 
 function updateChecklist() {
-  const selected = Array.from(checklistButtons)
+  if (!elements.checklistResult) return;
+
+  const selected = Array.from(elements.checklistButtons)
     .filter(btn => btn.classList.contains('active'))
     .map(btn => btn.dataset.item);
 
-  if (!checklistResult) return;
-
   if (selected.length === 0) {
-    checklistResult.textContent = 'Select items from the checklist to confirm your safety essentials.';
+    elements.checklistResult.textContent = 'Select items from the checklist to confirm your safety essentials.';
     return;
   }
 
-  checklistResult.innerHTML = `<strong>Checklist ready</strong><p>${selected.length} item(s) selected: ${selected.join(', ')}.</p>`;
+  elements.checklistResult.innerHTML = `<strong>Checklist ready</strong><p>${selected.length} item(s) selected: ${selected.join(', ')}.</p>`;
 }
 
 function setupChecklist() {
-  checklistButtons.forEach(button => {
+  elements.checklistButtons.forEach(button => {
     button.addEventListener('click', () => {
       button.classList.toggle('active');
       updateChecklist();
@@ -126,52 +129,59 @@ function setupChecklist() {
 }
 
 function setupChecklistButton() {
-  if (!checklistBtn) return;
-  checklistBtn.addEventListener('click', () => {
-    if (checklistButtons.length > 0) {
-      checklistButtons[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
-      checklistButtons[0].classList.add('active');
-      updateChecklist();
-    }
+  if (!elements.checklistBtn || elements.checklistButtons.length === 0) return;
+  
+  elements.checklistBtn.addEventListener('click', () => {
+    const firstButton = elements.checklistButtons[0];
+    firstButton.classList.add('active');
+    firstButton.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    updateChecklist();
   });
 }
 
 function setupDetailsToggle() {
-  if (!infoDetails || !detailsContent) return;
+  if (!elements.infoDetails || !elements.detailsContent) return;
 
-  toggleButtons.forEach(button => {
+  elements.toggleButtons.forEach(button => {
     button.addEventListener('click', () => {
       const detailKey = button.dataset.detail;
       if (!detailsData[detailKey]) return;
 
-      const isActive = infoDetails.classList.contains('active') && infoDetails.dataset.active === detailKey;
-      if (isActive) {
-        infoDetails.classList.remove('active');
-        infoDetails.dataset.active = '';
-        button.textContent = 'Learn More';
-        return;
-      }
+      const isActive = elements.infoDetails.classList.contains('active') && 
+                       elements.infoDetails.dataset.active === detailKey;
 
-      detailsContent.innerHTML = detailsData[detailKey];
-      infoDetails.classList.add('active');
-      infoDetails.dataset.active = detailKey;
-      toggleButtons.forEach(btn => btn.textContent = 'Learn More');
-      button.textContent = 'Hide details';
-      infoDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (isActive) {
+        // Close the details
+        elements.infoDetails.classList.remove('active');
+        elements.infoDetails.dataset.active = '';
+        button.textContent = 'Learn More';
+      } else {
+        // Open the details
+        elements.detailsContent.innerHTML = detailsData[detailKey];
+        elements.infoDetails.classList.add('active');
+        elements.infoDetails.dataset.active = detailKey;
+        
+        // Update button text for all buttons
+        elements.toggleButtons.forEach(btn => {
+          btn.textContent = btn === button ? 'Hide details' : 'Learn More';
+        });
+        
+        elements.infoDetails.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   });
 }
 
 function setupPlayButton() {
-  if (!playBtn || !rescueVideo) return;
+  if (!elements.playBtn || !elements.rescueVideo) return;
 
-  playBtn.addEventListener('click', () => {
-    if (rescueVideo.paused) {
-      rescueVideo.play();
-      playBtn.textContent = 'Pause video';
+  elements.playBtn.addEventListener('click', () => {
+    if (elements.rescueVideo.paused) {
+      elements.rescueVideo.play();
+      elements.playBtn.textContent = 'Pause video';
     } else {
-      rescueVideo.pause();
-      playBtn.textContent = 'Play video';
+      elements.rescueVideo.pause();
+      elements.playBtn.textContent = 'Play video';
     }
   });
 }
@@ -186,7 +196,8 @@ function revealOnScroll() {
   });
 }
 
-window.addEventListener('DOMContentLoaded', () => {
+// Initialize all features
+function initializeApp() {
   updateYear();
   refreshTime();
   setupChecklist();
@@ -194,7 +205,9 @@ window.addEventListener('DOMContentLoaded', () => {
   setupDetailsToggle();
   setupPlayButton();
   revealOnScroll();
-});
+}
 
+// Event Listeners
+document.addEventListener('DOMContentLoaded', initializeApp);
 window.addEventListener('scroll', revealOnScroll);
 setInterval(refreshTime, 1000);

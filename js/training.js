@@ -1,18 +1,29 @@
-const currentYear = document.querySelector('.current-year');
-const headerTime = document.getElementById('header-time');
-const nepalTimeDisplay = document.getElementById('nepal-time');
-const planBtn = document.getElementById('plan-btn');
-const heroPlanBtn = document.getElementById('plan-btn-hero');
-const trekLength = document.getElementById('trek-length');
-const planResult = document.getElementById('plan-result');
-const brandLogo = document.getElementById('brand-logo');
-const planModal = document.getElementById('plan-modal');
-const closeModal = document.getElementById('close-modal');
-const modalTitle = document.getElementById('modal-title');
-const modalDescription = document.getElementById('modal-description');
-const modalList = document.getElementById('modal-list');
-const modalImage = document.getElementById('modal-image');
-const learnButtons = document.querySelectorAll('.learn-more');
+// DOM Elements
+const elements = {
+  currentYear: document.querySelector('.current-year'),
+  headerTime: document.getElementById('header-time'),
+  nepalTimeDisplay: document.getElementById('nepal-time'),
+  planBtn: document.getElementById('plan-btn'),
+  heroPlanBtn: document.getElementById('plan-btn-hero'),
+  trekLength: document.getElementById('trek-length'),
+  planResult: document.getElementById('plan-result'),
+  brandLogo: document.getElementById('brand-logo'),
+  planModal: document.getElementById('plan-modal'),
+  closeModal: document.getElementById('close-modal'),
+  modalTitle: document.getElementById('modal-title'),
+  modalDescription: document.getElementById('modal-description'),
+  modalList: document.getElementById('modal-list'),
+  modalImage: document.getElementById('modal-image'),
+  modalDetails: document.getElementById('modal-details'),
+  learnButtons: document.querySelectorAll('.learn-more'),
+  acceptBtn: document.getElementById('cookie-accept'),
+  declineBtn: document.getElementById('cookie-decline'),
+  consentBanner: document.getElementById('cookie-consent'),
+  contactForm: document.getElementById('contact-form'),
+  formMessage: document.getElementById('form-message'),
+  nameInput: document.getElementById('name'),
+  emailInput: document.getElementById('email'),
+};
 
 // Cookie Consent Functions
 function setCookie(name, value, days = 365) {
@@ -39,17 +50,15 @@ function deleteCookie(name) {
 }
 
 function showCookieConsent() {
-  const consentBanner = document.getElementById('cookie-consent');
   const hasConsent = getCookie('cookieConsent');
-  if (!hasConsent && consentBanner) {
-    consentBanner.classList.remove('hidden');
+  if (!hasConsent && elements.consentBanner) {
+    elements.consentBanner.classList.remove('hidden');
   }
 }
 
 function hideCookieConsent() {
-  const consentBanner = document.getElementById('cookie-consent');
-  if (consentBanner) {
-    consentBanner.classList.add('hidden');
+  if (elements.consentBanner) {
+    elements.consentBanner.classList.add('hidden');
   }
 }
 
@@ -64,8 +73,7 @@ function declineCookies() {
 }
 
 function updateYear() {
-  const year = new Date().getFullYear();
-  if (currentYear) currentYear.textContent = year;
+  if (elements.currentYear) elements.currentYear.textContent = new Date().getFullYear();
 }
 
 function getNepalTime() {
@@ -81,8 +89,8 @@ function getNepalTime() {
 
 function refreshTime() {
   const time = getNepalTime();
-  if (headerTime) headerTime.textContent = `Kathmandu: ${time}`;
-  if (nepalTimeDisplay) nepalTimeDisplay.textContent = time;
+  if (elements.headerTime) elements.headerTime.textContent = `Kathmandu: ${time}`;
+  if (elements.nepalTimeDisplay) elements.nepalTimeDisplay.textContent = time;
 }
 
 function buildPlan(duration) {
@@ -113,7 +121,7 @@ const planDetails = {
       '20–40 minute intervals or hill repeats',
       'One longer walk with a light pack',
     ],
-    image: 'https://images.unsplash.com/photo-1526401281623-99d69955d75d?auto=format&fit=crop&w=900&q=80',
+    image: 'cardio.jpg',
   },
   strength: {
     title: 'Strength plan',
@@ -141,61 +149,61 @@ const planDetails = {
 
 function showPlan(duration) {
   const plan = buildPlan(duration);
-  if (planResult) {
-    planResult.innerHTML = `<strong>${plan.title}</strong><p>${plan.info}</p>`;
+  if (elements.planResult) {
+    elements.planResult.innerHTML = `<strong>${plan.title}</strong><p>${plan.info}</p>`;
   }
 }
 
 function openPlanModal(planKey) {
   const plan = planDetails[planKey];
-  const modalDetails = document.getElementById('modal-details');
-  if (!plan || !planModal || !modalTitle || !modalDescription || !modalList || !modalImage || !modalDetails) return;
+  if (!plan || !elements.planModal || !elements.modalTitle || !elements.modalDescription || !elements.modalList || !elements.modalImage || !elements.modalDetails) return;
 
-  modalTitle.textContent = plan.title;
-  modalDescription.innerHTML = `<p>${plan.description}</p>`;
-  modalList.innerHTML = plan.list.map(item => `<li>${item}</li>`).join('');
-  modalDetails.innerHTML = plan.details ? `<p>${plan.details}</p>` : '';
-  modalImage.src = plan.image;
-  modalImage.alt = `${plan.title} image`;
-  planModal.classList.remove('hidden');
+  elements.modalTitle.textContent = plan.title;
+  elements.modalDescription.innerHTML = `<p>${plan.description}</p>`;
+  elements.modalList.innerHTML = plan.list.map(item => `<li>${item}</li>`).join('');
+  elements.modalDetails.innerHTML = plan.details ? `<p>${plan.details}</p>` : '';
+  elements.modalImage.src = plan.image;
+  elements.modalImage.alt = `${plan.title} image`;
+  elements.planModal.classList.remove('hidden');
 }
 
 function closeModalFn() {
-  if (planModal) planModal.classList.add('hidden');
+  if (elements.planModal) elements.planModal.classList.add('hidden');
 }
 
 function setupPlanButtons() {
-  if (planBtn) {
-    planBtn.addEventListener('click', () => showPlan(trekLength.value));
+  if (elements.planBtn) {
+    elements.planBtn.addEventListener('click', () => showPlan(elements.trekLength.value));
   }
 
-  if (heroPlanBtn) {
-    heroPlanBtn.addEventListener('click', () => {
-      showPlan(trekLength.value);
-      planResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  if (elements.heroPlanBtn) {
+    elements.heroPlanBtn.addEventListener('click', () => {
+      showPlan(elements.trekLength.value);
+      elements.planResult.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
   }
 }
 
 function setupLogoModal() {
-  if (!brandLogo) return;
-  brandLogo.addEventListener('click', (event) => {
+  if (!elements.brandLogo) return;
+  
+  elements.brandLogo.addEventListener('click', (event) => {
     event.preventDefault();
     if (planDetails.cardio) {
       openPlanModal('cardio');
     }
   });
 
-  if (!planModal) return;
+  if (elements.planModal) {
+    elements.planModal.addEventListener('click', (event) => {
+      if (event.target === elements.planModal) {
+        closeModalFn();
+      }
+    });
+  }
 
-  planModal.addEventListener('click', (event) => {
-    if (event.target === planModal) {
-      closeModalFn();
-    }
-  });
-
-  if (closeModal) {
-    closeModal.addEventListener('click', closeModalFn);
+  if (elements.closeModal) {
+    elements.closeModal.addEventListener('click', closeModalFn);
   }
 
   document.addEventListener('keydown', (event) => {
@@ -204,12 +212,140 @@ function setupLogoModal() {
 }
 
 function setupLearnButtons() {
-  learnButtons.forEach((button) => {
+  elements.learnButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const planKey = button.dataset.plan;
       openPlanModal(planKey);
     });
   });
+}
+
+function setupFormValidation() {
+  if (!elements.contactForm) return;
+  
+  // Real-time validation for name
+  if (elements.nameInput) {
+    elements.nameInput.addEventListener('input', () => {
+      validateField(elements.nameInput, 'name');
+    });
+  }
+
+  // Real-time validation for email
+  if (elements.emailInput) {
+    elements.emailInput.addEventListener('input', () => {
+      validateField(elements.emailInput, 'email');
+    });
+    elements.emailInput.addEventListener('blur', () => {
+      validateField(elements.emailInput, 'email');
+    });
+  }
+
+  // Real-time validation for experience
+  const experienceInput = document.getElementById('experience');
+  if (experienceInput) {
+    experienceInput.addEventListener('change', () => {
+      validateField(experienceInput, 'experience');
+    });
+  }
+
+  // Form submission
+  elements.contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    handleFormSubmit();
+  });
+}
+
+function validateField(input, fieldType) {
+  const feedback = input.parentElement.querySelector('.field-feedback');
+  let isValid = false;
+  let message = '';
+
+  if (fieldType === 'name') {
+    const value = input.value.trim();
+    if (value === '') {
+      message = 'Please enter your name';
+    } else if (value.length < 2) {
+      message = 'Name must be at least 2 characters';
+    } else if (!/^[a-zA-Z\s]+$/.test(value)) {
+      message = 'Name can only contain letters';
+    } else {
+      isValid = true;
+      message = 'Looking good!';
+    }
+  } else if (fieldType === 'email') {
+    const value = input.value.trim();
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (value === '') {
+      message = 'Please enter your email';
+    } else if (!emailRegex.test(value)) {
+      message = 'Please enter a valid email';
+    } else {
+      isValid = true;
+      message = 'Email verified!';
+    }
+  } else if (fieldType === 'experience') {
+    const value = input.value.trim();
+    if (value === '') {
+      message = 'Please select your experience level';
+    } else {
+      isValid = true;
+      message = `You selected ${value} level`;
+    }
+  }
+
+  // Update visual state
+  if (isValid) {
+    input.classList.remove('invalid');
+    input.classList.add('valid');
+  } else {
+    input.classList.remove('valid');
+    input.classList.add('invalid');
+  }
+
+  if (feedback) {
+    feedback.textContent = message;
+  }
+
+  return isValid;
+}
+
+function handleFormSubmit() {
+  const nameValid = validateField(elements.nameInput, 'name');
+  const emailValid = validateField(elements.emailInput, 'email');
+  const experienceInput = document.getElementById('experience');
+  const experienceValid = validateField(experienceInput, 'experience');
+
+  if (nameValid && emailValid && experienceValid) {
+    showFormMessage(
+      'Success! Your training plan request has been sent. Check your email for details!',
+      'success'
+    );
+    elements.contactForm.reset();
+    // Remove validation classes
+    elements.contactForm.querySelectorAll('.valid, .invalid').forEach(el => {
+      el.classList.remove('valid', 'invalid');
+    });
+  } else {
+    showFormMessage(
+      'Please fix the errors above before submitting',
+      'error'
+    );
+  }
+}
+
+function showFormMessage(message, type) {
+  if (!elements.formMessage) return;
+  
+  elements.formMessage.textContent = message;
+  elements.formMessage.classList.remove('success', 'error');
+  elements.formMessage.classList.add('show', type);
+
+  // Auto-hide success message after 5 seconds
+  if (type === 'success') {
+    setTimeout(() => {
+      elements.formMessage.classList.remove('show');
+    }, 5000);
+  }
 }
 
 function revealOnScroll() {
@@ -223,48 +359,23 @@ function revealOnScroll() {
   });
 }
 
-window.addEventListener('load', () => {
+// Initialize all features
+function initializeApp() {
   updateYear();
   refreshTime();
   setupPlanButtons();
   setupLogoModal();
   setupLearnButtons();
+  setupFormValidation();
   revealOnScroll();
   showCookieConsent();
   
   // Setup cookie consent buttons
-  const acceptBtn = document.getElementById('cookie-accept');
-  const declineBtn = document.getElementById('cookie-decline');
-  if (acceptBtn) acceptBtn.addEventListener('click', acceptCookies);
-  if (declineBtn) declineBtn.addEventListener('click', declineCookies);
-});
+  if (elements.acceptBtn) elements.acceptBtn.addEventListener('click', acceptCookies);
+  if (elements.declineBtn) elements.declineBtn.addEventListener('click', declineCookies);
+}
 
+// Event Listeners
+window.addEventListener('load', initializeApp);
 window.addEventListener('scroll', revealOnScroll);
 setInterval(refreshTime, 1000);
-
-const form = document.getElementById("contact-form");
-const formMessage = document.getElementById("form-message");
-
-if (form) {
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const name = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-
-    if (name === "" || email === "") {
-      formMessage.textContent = "Please fill in all fields.";
-      formMessage.style.color = "red";
-      return;
-    }
-
-    if (!email.includes("@")) {
-      formMessage.textContent = "Enter a valid email.";
-      formMessage.style.color = "red";
-      return;
-    }
-
-    formMessage.textContent = "Your training plan request has been sent!";
-      formMessage.style.color = "green";
-  });
-}
