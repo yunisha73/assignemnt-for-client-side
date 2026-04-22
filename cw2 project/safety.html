@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Safety and rescue page for Himalayan trekking with altitude and emergency advice.">
+  <meta name="keywords" content="safety, rescue, altitude sickness, emergency tips, Nepal trekking">
+  <title>Safety & Rescue - Trekking & Travel Nepal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/safety.css">
+</head>
+<body>
+  <header>
+    <div class="container nav-wrap">
+      <a class="brand" id="brand-logo" href="#">
+        <img src="pictures/logo.jpeg" alt="Trekking & Travel Nepal logo" class="logo">
+        Trekking & Travel Nepal
+      </a>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="trekking-guides.html">Trekking Guides</a></li>
+          <li><a href="training.html">Training</a></li>
+          <li><a href="safety.html">Safety</a></li>
+          <li><a href="resources.html">Resources</a></li>
+        </ul>
+      </nav>
+      <div class="header-time" id="header-time">Nepal time loading...</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+      <div class="hero-body">
+        <p class="eyebrow">Safety & Rescue</p>
+        <h1>Stay Safe on the Trail</h1>
+        <p class="section-subtitle">Explore rescue planning, altitude awareness, and emergency response for Himalayan treks.</p>
+        <div class="hero-actions">
+          <button id="checklist-btn" class="btn-primary">Open emergency checklist</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container grid-3 feature-grid">
+        <article class="feature-card">
+          <img src="pictures/altitude.jpg" alt="Altitude awareness">
+          <h3>Altitude Awareness</h3>
+          <p>Learn about altitude sickness and how to stay safe in the high mountains.</p>
+          <button class="btn-primary toggle-btn" data-detail="altitude">Learn More</button>
+        </article>
+        <article class="feature-card">
+          <img src="pictures/kit.jpg" alt="Emergency kit">
+          <h3>Emergency kit</h3>
+          <p>Keep first aid, communication tools, and warm layers within easy reach on every hike.</p>
+          <button class="btn-primary toggle-btn" data-detail="emergency">Learn More</button>
+        </article>
+        <article class="feature-card">
+          <img src="pictures/team.jpg" alt="Team communication">
+          <h3>Team communication</h3>
+          <p>Share your route, use radios, and confirm checkpoints with your group before departure.</p>
+          <button class="btn-primary toggle-btn" data-detail="team">Learn More</button>
+        </article>
+      </div>
+
+      <div id="infoDetails" class="details-section">
+        <div class="container">
+          <div class="details-content"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal accent">
+      <div class="container split">
+        <div>
+          <h2 class="section-title">Rescue planning</h2>
+          <p class="section-subtitle">Prepare for unexpected events with a clear plan and rescue contacts.</p>
+          <ul class="feature-list">
+            <li>Register your trek, know local rescue services, and have a backup way to call for help.</li>
+            <li>Practice basic first aid and use a satellite device when mobile coverage is weak.</li>
+            <li>Keep your team together and follow the guide if conditions worsen.</li>
+          </ul>
+          <div class="panel-group">
+            <div class="panel-item">
+              <strong>Helicopter access</strong>
+              <p>Check landing zones and evacuation procedures before starting remote treks.</p>
+            </div>
+            <div class="panel-item">
+              <strong>Weather watch</strong>
+              <p>Monitor forecasts carefully and choose lower camps if storms approach.</p>
+            </div>
+          </div>
+        </div>
+        <div class="image-panel">
+          <img src="pictures/safety.png" alt="Safety planning">
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal media-section">
+      <div class="container split">
+        <div>
+          <h2 class="section-title">Everest helicopter rescue in action</h2>
+          <p class="section-subtitle">See how air support reaches trekkers and tourists in the high Himalayas.</p>
+          <p>Helicopter crews in the Everest region carry injured hikers, medical supplies, and emergency teams across terrain where every minute counts.</p>
+        </div>
+        <div class="video-panel">
+          <div class="media-panel">
+            <img src="pictures/mt.everest.jpg" alt="Helicopter rescue in snowy mountains">
+            <p class="image-note">Rescue of climbers on Mt. Everest during an earthquake.</p>
+          </div>
+          <div class="video-wrapper">
+            <video id="rescueVideo" muted loop playsinline poster="pictures/mt.everest.jpg">
+              <source src="videos/helicopter.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+            <div class="video-controls">
+              <button id="playBtn" class="btn-secondary" type="button">Play video</button>
+            </div>
+            <p class="video-caption">Helicopter rescue in action during mountain emergency operations.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="container">
+        <h2 class="section-title">Quick Rescue Checklist</h2>
+        <p class="section-subtitle">Tap items below to mark your must-have rescue gear.</p>
+        <div class="checklist-grid">
+          <button class="check-item" data-item="First aid kit">First aid kit</button>
+          <button class="check-item" data-item="Headlamp & batteries">Headlamp & batteries</button>
+          <button class="check-item" data-item="Communication device">Communication device</button>
+          <button class="check-item" data-item="Spare warm layers">Spare warm layers</button>
+          <button class="check-item" data-item="Emergency shelter">Emergency shelter</button>
+          <button class="check-item" data-item="Navigation tools">Navigation tools</button>
+          
+        </div>
+        <div id="checklist-result" class="plan-result">
+          Select items from the checklist to confirm your safety essentials.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-wrap">
+      <p>Safety and rescue planning for independent Himalayan trekking in Nepal.</p>
+      <div class="footer-bottom">© <span class="current-year"></span> Trekking & Travel Nepal. All rights reserved.</div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="js/safety.js"></script>
+</body>
+</html>
