@@ -1,0 +1,1224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Trekking & Travel Nepal</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <style>
+        :root{
+            --primary:#15233b;
+            --secondary:#c8233f;
+            --accent:#d4af37;
+            --text:#2f3441;
+            --muted:#6d7483;
+            --bg:#f6f7fb;
+            --white:#ffffff;
+            --border:#e8e8e8;
+            --shadow:0 14px 35px rgba(0,0,0,0.08);
+            --radius:18px;
+        }
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        html{
+            scroll-behavior:smooth;
+        }
+
+        body{
+            font-family:"Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            color:var(--text);
+            background:#fff;
+            line-height:1.7;
+        }
+
+        a{
+            text-decoration:none;
+        }
+
+        .top-bar{
+            background:var(--primary);
+            color:#fff;
+            padding:0.6rem 0;
+            font-size:0.92rem;
+        }
+
+        .top-bar .top-wrap{
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            gap:1rem;
+            flex-wrap:wrap;
+        }
+
+        .top-left, .top-right{
+            display:flex;
+            gap:1.5rem;
+            flex-wrap:wrap;
+            align-items:center;
+        }
+
+        .top-bar i{
+            color:var(--accent);
+            margin-right:0.4rem;
+        }
+
+        .navbar{
+            background:rgba(255,255,255,0.97)!important;
+            backdrop-filter:blur(10px);
+            border-bottom:1px solid rgba(0,0,0,0.05);
+            padding:1rem 0;
+            transition:all 0.3s ease;
+        }
+
+        .navbar.scrolled{
+            box-shadow:0 10px 24px rgba(0,0,0,0.08);
+        }
+
+        .navbar-brand{
+            display:flex;
+            align-items:center;
+            gap:16px;
+            color:var(--primary)!important;
+        }
+
+        .navbar-brand img{
+            width:72px;
+            height:72px;
+            object-fit:contain;
+            background:#fff;
+            border-radius:12px;
+            box-shadow:0 8px 20px rgba(0,0,0,0.08);
+            padding:6px;
+        }
+
+        .brand-text{
+            line-height:1.05;
+        }
+
+        .brand-text .title{
+            font-size:1.05rem;
+            font-weight:800;
+            color:var(--primary);
+        }
+
+        .brand-text .subtitle{
+            font-size:0.72rem;
+            letter-spacing:2px;
+            color:var(--muted);
+            text-transform:uppercase;
+        }
+
+        .nav-link{
+            color:var(--primary)!important;
+            font-weight:700;
+            font-size:1rem;
+            margin-left:1rem;
+            position:relative;
+        }
+
+        .nav-link:hover,
+        .nav-link.active{
+            color:var(--secondary)!important;
+        }
+
+        .nav-link::after{
+            content:"";
+            position:absolute;
+            left:0;
+            bottom:-5px;
+            width:0;
+            height:2px;
+            background:var(--secondary);
+            transition:width 0.3s ease;
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after{
+            width:100%;
+        }
+
+        .hero{
+            position:relative;
+            min-height:68vh;
+            display:flex;
+            align-items:center;
+            overflow:hidden;
+            color:#fff;
+            background:#000;
+        }
+
+        .hero-video{
+            position:absolute;
+            top:0;
+            left:0;
+            width:100%;
+            height:100%;
+            object-fit:cover;
+            z-index:0;
+            transform:scale(1.03);
+        }
+
+        .hero-overlay{
+            position:absolute;
+            inset:0;
+            background:
+                linear-gradient(90deg, rgba(21,35,59,0.88) 0%, rgba(21,35,59,0.62) 50%, rgba(0,0,0,0.32) 100%),
+                linear-gradient(180deg, rgba(0,0,0,0.18), rgba(0,0,0,0.46));
+            z-index:1;
+        }
+
+        .hero::after{
+            content:"";
+            position:absolute;
+            left:0;
+            right:0;
+            bottom:0;
+            height:120px;
+            background:linear-gradient(to top, rgba(0,0,0,0.22), transparent);
+            z-index:1;
+        }
+
+        .hero-content{
+            position:relative;
+            z-index:2;
+            max-width:760px;
+            padding:5rem 0;
+        }
+
+        .hero-tag{
+            display:inline-block;
+            background:rgba(255,255,255,0.12);
+            border:1px solid rgba(255,255,255,0.2);
+            padding:0.45rem 0.95rem;
+            border-radius:999px;
+            font-size:0.82rem;
+            letter-spacing:1px;
+            margin-bottom:1.2rem;
+        }
+
+        .hero h1{
+            font-size:3.7rem;
+            line-height:1.08;
+            font-weight:800;
+            margin-bottom:1rem;
+        }
+
+        .hero p{
+            font-size:1.12rem;
+            color:#f2f2f2;
+            margin-bottom:0;
+            max-width:670px;
+        }
+
+        .mini-links{
+            background:#f1f3f7;
+            border-bottom:1px solid #e7eaf0;
+            padding:1rem 0;
+        }
+
+        .mini-links-wrap{
+            display:flex;
+            justify-content:center;
+            gap:1rem;
+            flex-wrap:wrap;
+        }
+
+        .mini-pill{
+            background:#fff;
+            color:var(--primary);
+            padding:0.8rem 1.2rem;
+            border-radius:999px;
+            box-shadow:0 8px 22px rgba(0,0,0,0.05);
+            border:1px solid #ececec;
+            font-weight:700;
+            transition:all 0.25s ease;
+        }
+
+        .mini-pill:hover{
+            transform:translateY(-2px);
+            color:var(--secondary);
+        }
+
+        .mini-pill i{
+            color:var(--accent);
+            margin-right:0.5rem;
+        }
+
+        section{
+            padding:5.5rem 0;
+        }
+
+        .section-light{
+            background:var(--bg);
+        }
+
+        .section-title{
+            font-size:2.5rem;
+            font-weight:800;
+            color:var(--primary);
+            margin-bottom:1rem;
+        }
+
+        .section-subtitle{
+            max-width:820px;
+            color:var(--muted);
+            font-size:1.08rem;
+            margin-bottom:2rem;
+        }
+
+        .feature-image-wrap{
+            position:relative;
+        }
+
+        .feature-image-wrap::before{
+            content:"";
+            position:absolute;
+            top:-18px;
+            right:-18px;
+            width:120px;
+            height:120px;
+            background:linear-gradient(135deg,var(--accent),#f8d76f);
+            border-radius:24px;
+            opacity:0.22;
+            z-index:0;
+        }
+
+        .feature-image{
+            position:relative;
+            z-index:1;
+            width:100%;
+            height:480px;
+            object-fit:cover;
+            border-radius:var(--radius);
+            box-shadow:var(--shadow);
+            border:6px solid rgba(255,255,255,0.85);
+        }
+
+        .content-box h3{
+            color:var(--primary);
+            font-size:1.85rem;
+            font-weight:800;
+            margin-bottom:1rem;
+        }
+
+        .content-box p{
+            color:#555f6f;
+            margin-bottom:1rem;
+        }
+
+        .highlight-note{
+            background:#fff9e8;
+            border-left:5px solid var(--accent);
+            padding:1rem 1.15rem;
+            border-radius:12px;
+            color:#665116;
+            margin-top:1.4rem;
+        }
+
+        .card-grid{
+            display:grid;
+            grid-template-columns:repeat(3, 1fr);
+            gap:1.4rem;
+        }
+
+        .info-card{
+            background:#fff;
+            border:1px solid var(--border);
+            border-radius:var(--radius);
+            padding:1.6rem;
+            box-shadow:0 10px 26px rgba(0,0,0,0.05);
+            transition:all 0.3s ease;
+            height:100%;
+        }
+
+        .info-card:hover{
+            transform:translateY(-8px);
+            box-shadow:0 18px 32px rgba(0,0,0,0.09);
+        }
+
+        .info-card i{
+            font-size:2rem;
+            color:var(--secondary);
+            margin-bottom:1rem;
+        }
+
+        .info-card h4{
+            font-size:1.2rem;
+            font-weight:800;
+            color:var(--primary);
+            margin-bottom:0.8rem;
+        }
+
+        .info-card p{
+            color:var(--muted);
+            margin-bottom:0;
+        }
+
+        .stats-band{
+            background:linear-gradient(135deg, #15233b 0%, #1b3254 100%);
+            color:#fff;
+            padding:4rem 0;
+        }
+
+        .stat-item{
+            text-align:center;
+            padding:1rem;
+        }
+
+        .stat-number{
+            display:block;
+            font-size:2.7rem;
+            font-weight:800;
+            color:var(--accent);
+            line-height:1;
+            margin-bottom:0.45rem;
+        }
+
+        .stat-label{
+            color:#dde5ef;
+            font-size:1rem;
+        }
+
+        .list-box{
+            background:#fff;
+            border:1px solid var(--border);
+            border-radius:16px;
+            padding:1.5rem;
+            box-shadow:0 8px 20px rgba(0,0,0,0.05);
+            height:100%;
+        }
+
+        .list-box h4{
+            font-weight:800;
+            color:var(--primary);
+            margin-bottom:1rem;
+        }
+
+        .list-box ul{
+            padding-left:1.2rem;
+            margin-bottom:0;
+        }
+
+        .list-box li{
+            margin-bottom:0.7rem;
+            color:#5f6878;
+        }
+
+        .contact-strip{
+            background:linear-gradient(135deg, rgba(200,35,63,0.96), rgba(128,20,38,0.96));
+            color:#fff;
+            border-radius:26px;
+            padding:2.4rem;
+            box-shadow:var(--shadow);
+        }
+
+        .contact-strip h3{
+            font-size:2rem;
+            font-weight:800;
+            margin-bottom:0.7rem;
+        }
+
+        .contact-strip p{
+            color:#ffe9ee;
+            margin-bottom:1.2rem;
+        }
+
+        .contact-boxes{
+            display:grid;
+            grid-template-columns:repeat(3, 1fr);
+            gap:1rem;
+            margin-top:1rem;
+        }
+
+        .contact-box{
+            background:rgba(255,255,255,0.12);
+            border:1px solid rgba(255,255,255,0.18);
+            border-radius:16px;
+            padding:1rem 1.1rem;
+        }
+
+        .contact-box i{
+            margin-right:0.5rem;
+            color:#ffd766;
+        }
+
+        .comment-section{
+            padding-top:0;
+        }
+
+        .comment-card{
+            max-width:860px;
+            margin:0 auto;
+            background:#fff;
+            border:1px solid var(--border);
+            border-radius:20px;
+            box-shadow:var(--shadow);
+            padding:1.6rem;
+        }
+
+        .comment-card h3{
+            color:var(--primary);
+            font-size:1.5rem;
+            font-weight:800;
+            margin-bottom:0.4rem;
+        }
+
+        .comment-card p{
+            color:var(--muted);
+            margin-bottom:1.2rem;
+        }
+
+        .rating-stars{
+            display:flex;
+            gap:0.5rem;
+            margin-bottom:1rem;
+            font-size:1.5rem;
+            color:#d4d4d4;
+            cursor:pointer;
+        }
+
+        .rating-stars i.active{
+            color:var(--accent);
+        }
+
+        .comment-list{
+            margin-top:1rem;
+        }
+
+        .comment-item{
+            border-top:1px solid #ececec;
+            padding-top:0.9rem;
+            margin-top:0.9rem;
+        }
+
+        .comment-meta{
+            font-size:0.88rem;
+            color:var(--muted);
+            margin-bottom:0.35rem;
+        }
+
+        .comment-rating{
+            color:var(--accent);
+            font-size:0.92rem;
+            margin-bottom:0.25rem;
+        }
+
+        footer{
+            background:#0d1627;
+            color:#cbd4df;
+            padding:4rem 0 2rem;
+            margin-top:5rem;
+        }
+
+        footer h5{
+            color:#fff;
+            font-weight:800;
+            margin-bottom:1rem;
+        }
+
+        footer p, footer li, footer a{
+            color:#cbd4df;
+            font-size:0.96rem;
+        }
+
+        footer a:hover{
+            color:var(--accent);
+        }
+
+        .footer-links{
+            list-style:none;
+            padding:0;
+            margin:0;
+        }
+
+        .footer-links li{
+            margin-bottom:0.7rem;
+        }
+
+        .footer-contact li{
+            list-style:none;
+            margin-bottom:0.85rem;
+        }
+
+        .footer-contact i{
+            color:var(--accent);
+            margin-right:0.55rem;
+        }
+
+        .social-links a{
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+            width:44px;
+            height:44px;
+            border-radius:50%;
+            background:rgba(255,255,255,0.08);
+            margin-right:0.6rem;
+            transition:all 0.3s ease;
+        }
+
+        .social-links a:hover{
+            background:var(--secondary);
+            color:#fff;
+            transform:translateY(-3px);
+        }
+
+        .footer-bottom{
+            border-top:1px solid rgba(255,255,255,0.08);
+            margin-top:2rem;
+            padding-top:1.4rem;
+            text-align:center;
+        }
+
+        .cookie-banner{
+            position:fixed;
+            left:20px;
+            right:20px;
+            bottom:20px;
+            max-width:1100px;
+            margin:0 auto;
+            background:rgba(13,22,39,0.97);
+            color:#fff;
+            padding:1rem 1.2rem;
+            border-radius:16px;
+            display:none;
+            z-index:9999;
+            box-shadow:0 20px 40px rgba(0,0,0,0.22);
+            border:1px solid rgba(255,255,255,0.08);
+        }
+
+        .cookie-banner.show{
+            display:block;
+            animation:fadeUp 0.3s ease;
+        }
+
+        @keyframes fadeUp{
+            from{
+                opacity:0;
+                transform:translateY(20px);
+            }
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
+
+        .back-top{
+            position:fixed;
+            right:20px;
+            bottom:24px;
+            width:48px;
+            height:48px;
+            border:none;
+            border-radius:50%;
+            background:var(--secondary);
+            color:#fff;
+            display:none;
+            z-index:998;
+            box-shadow:0 14px 26px rgba(200,35,63,0.25);
+        }
+
+        .back-top:hover{
+            background:#aa1f35;
+        }
+
+        @media (max-width: 991px){
+            .hero{
+                min-height:60vh;
+            }
+
+            .hero h1{
+                font-size:2.8rem;
+            }
+
+            .feature-image{
+                height:360px;
+                margin-bottom:1.5rem;
+            }
+
+            .card-grid{
+                grid-template-columns:repeat(2, 1fr);
+            }
+
+            .contact-boxes{
+                grid-template-columns:1fr;
+            }
+
+            .top-bar .top-wrap{
+                justify-content:center;
+            }
+        }
+
+        @media (max-width: 767px){
+            .navbar-brand img{
+                width:58px;
+                height:58px;
+            }
+
+            .brand-text .title{
+                font-size:0.95rem;
+            }
+
+            .hero h1{
+                font-size:2.1rem;
+            }
+
+            .hero p{
+                font-size:1rem;
+            }
+
+            .section-title{
+                font-size:2rem;
+            }
+
+            .card-grid{
+                grid-template-columns:1fr;
+            }
+
+            .cookie-banner{
+                left:12px;
+                right:12px;
+                bottom:12px;
+            }
+
+            .comment-card{
+                padding:1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-wrap">
+                <div class="top-left">
+                    <div><i class="fas fa-circle-info"></i>Informative trekking resource for users</div>
+                </div>
+                <div class="top-right">
+                    <div><i class="fas fa-envelope"></i>info@trekking-nepal.com</div>
+                    <div><i class="fas fa-phone"></i>+977-1-4123456</div>
+                    <div><i class="fas fa-location-dot"></i>Kathmandu, Nepal</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="image and videos/WhatsApp Image 2026-04-16 at 13.22.00.jpeg" alt="Trekking & Travel Nepal Logo">
+                <div class="brand-text">
+                    <div class="title">Trekking & Travel Nepal</div>
+                    <div class="subtitle">Informative Guide Website</div>
+                </div>
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="trekking_guide.html">Trekking Guides</a></li>
+                    <li class="nav-item"><a class="nav-link" href="training.html">Training</a></li>
+                    <li class="nav-item"><a class="nav-link" href="safety.html">Safety</a></li>
+                    <li class="nav-item"><a class="nav-link" href="resources.html">Resources</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="image and videos/ssstik.io_1776349273983.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="hero-overlay"></div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-tag">About This Website</div>
+                <h1>Understanding Nepal Trekking Starts Here.</h1>
+                <p>
+                    This page explains what the website does, what kind of information it provides, and why it is useful for people who want to learn more about trekking in Nepal before they travel.
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <div class="mini-links">
+        <div class="container">
+            <div class="mini-links-wrap">
+                <a class="mini-pill" href="trekking-guides.html"><i class="fas fa-map-signs"></i>Trekking Guide 2026</a>
+                <a class="mini-pill" href="training.html"><i class="fas fa-book-open"></i>Training & Preparation</a>
+                <a class="mini-pill" href="safety.html"><i class="fas fa-shield-heart"></i>Safety Protocols</a>
+            </div>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">About this website</h2>
+            <p class="section-subtitle">
+                Trekking & Travel Nepal is designed as an informative guide website. It is made for users who want simple, useful, and better organized information about trekking in Nepal without needing to search in too many places.
+            </p>
+
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6">
+                    <div class="feature-image-wrap">
+                        <img src="image and videos/Sagarmatha-National-Park.png" alt="Sagarmatha National Park" class="feature-image">
+                    </div>
+                </div>
+                <div class="col-lg-6 content-box">
+                    <h3>What this page does</h3>
+                    <p>
+                        This About page explains the purpose of the website and introduces visitors to the kind of information available across the site. It helps readers understand that the website is focused on trekking knowledge, travel awareness, route understanding, and practical preparation.
+                    </p>
+                    <p>
+                        The page is meant to give users a strong first impression of the website, clarify how the sections are organized, and show how the site can support learning before trekking in Nepal.
+                    </p>
+                    <p>
+                        It also helps visitors see that the website is useful not only for trekking inspiration, but also for planning, safety awareness, cultural understanding, and general travel research.
+                    </p>
+                    <div class="highlight-note">
+                        <strong>Main purpose:</strong> to give users clearer, more useful, and better structured trekking information related to Nepal.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-light">
+        <div class="container">
+            <h2 class="section-title">What the website has done for users</h2>
+            <p class="section-subtitle">
+                A page like this is helpful because it brings together knowledge that people often need before trekking, especially when they are still learning and comparing options.
+            </p>
+
+            <div class="card-grid">
+                <div class="info-card">
+                    <i class="fas fa-route"></i>
+                    <h4>Made trekking information easier to understand</h4>
+                    <p>It organizes route knowledge, general trekking basics, and destination awareness into simpler sections that are easier to read.</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-person-hiking"></i>
+                    <h4>Helped users prepare better</h4>
+                    <p>It encourages readers to think ahead about training, weather, altitude, preparation, and what kind of trekking experience suits them.</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-book"></i>
+                    <h4>Worked as a learning resource</h4>
+                    <p>It can support students, travel researchers, first-time trekkers, and readers who want general understanding about Nepal trekking.</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-shield-halved"></i>
+                    <h4>Improved safety awareness</h4>
+                    <p>It reminds people that mountain travel needs caution, preparation, and respect for changing conditions.</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-earth-asia"></i>
+                    <h4>Encouraged cultural understanding</h4>
+                    <p>The site helps readers think beyond scenery by connecting trekking with communities, traditions, and local environments.</p>
+                </div>
+
+                <div class="info-card">
+                    <i class="fas fa-layer-group"></i>
+                    <h4>Made website sections more useful</h4>
+                    <p>By separating content into Home, About, Trekking Guides, Training, Safety, and Resources, users can find topics more clearly.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-band">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number counter" data-target="6">0</span>
+                        <div class="stat-label">Core Website Sections</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number counter" data-target="12">0</span>
+                        <div class="stat-label">Helpful Topics</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number counter" data-target="8">0</span>
+                        <div class="stat-label">Main Trek Themes</div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="stat-item">
+                        <span class="stat-number counter" data-target="100">0</span>
+                        <div class="stat-label">Focus on Users</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <h2 class="section-title">Why this website is useful</h2>
+            <p class="section-subtitle">
+                The value of this website comes from giving visitors one organized place to read, compare, and understand trekking-related topics in Nepal.
+            </p>
+
+            <div class="row g-4">
+                <div class="col-lg-4">
+                    <div class="list-box">
+                        <h4>For first-time trekkers</h4>
+                        <ul>
+                            <li>Helps reduce confusion before planning</li>
+                            <li>Introduces basic trekking ideas clearly</li>
+                            <li>Supports early route understanding</li>
+                            <li>Builds more realistic expectations</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="list-box">
+                        <h4>For students and researchers</h4>
+                        <ul>
+                            <li>Useful for learning and reading</li>
+                            <li>Supports project or study work</li>
+                            <li>Gives structured trekking themes</li>
+                            <li>Provides general Nepal trekking context</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="list-box">
+                        <h4>For general users</h4>
+                        <ul>
+                            <li>Simple navigation across topics</li>
+                            <li>Practical and readable content</li>
+                            <li>Professional layout and structure</li>
+                            <li>Easy access to key information sections</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-light">
+        <div class="container">
+            <h2 class="section-title">How the other pages support this website</h2>
+            <p class="section-subtitle">
+                The About page works best when the rest of the website also gives users clear, separate pages for different kinds of information.
+            </p>
+
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 content-box">
+                    <h3>Clear menu structure for better learning</h3>
+                    <p>
+                        The website menu is intentionally simple. Each page has a distinct purpose so users can move from general understanding to more specific topics without confusion.
+                    </p>
+                    <p>
+                        The Home page introduces the site, the About page explains its purpose, Trekking Guides focuses on route learning, Training helps with preparation, Safety highlights caution and awareness, and Resources gathers useful material in one place.
+                    </p>
+                    <div class="highlight-note">
+                        <strong>Professional structure:</strong> simple page names and separated topics make the website easier to use and more polished.
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="feature-image-wrap">
+                        <img src="image and videos/Nepal-Hiking.jpg" alt="Nepal Hiking" class="feature-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="container">
+            <div class="contact-strip">
+                <h3>Contact & Website Information</h3>
+                <p>
+                    This website is built for informative and educational use. Contact information can be shown across the site for website identity, user trust, and general information.
+                </p>
+
+                <div class="contact-boxes">
+                    <div class="contact-box">
+                        <strong><i class="fas fa-envelope"></i>Email</strong><br>
+                        info@trekking-nepal.com
+                    </div>
+                    <div class="contact-box">
+                        <strong><i class="fas fa-phone"></i>Phone</strong><br>
+                        +977-1-4123456
+                    </div>
+                    <div class="contact-box">
+                        <strong><i class="fas fa-location-dot"></i>Location</strong><br>
+                        Kathmandu, Nepal
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="comment-section">
+        <div class="container">
+            <div class="comment-card">
+                <h3>Comments & Rating</h3>
+                <p>Leave a small comment and rate this page.</p>
+
+                <form id="commentForm">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <input type="text" id="commentName" class="form-control" placeholder="Your name" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" id="commentTitle" class="form-control" placeholder="Short title">
+                        </div>
+                        <div class="col-12">
+                            <div class="rating-stars" id="ratingStars">
+                                <i class="fa-solid fa-star" data-value="1"></i>
+                                <i class="fa-solid fa-star" data-value="2"></i>
+                                <i class="fa-solid fa-star" data-value="3"></i>
+                                <i class="fa-solid fa-star" data-value="4"></i>
+                                <i class="fa-solid fa-star" data-value="5"></i>
+                            </div>
+                            <input type="hidden" id="commentRating" value="0">
+                        </div>
+                        <div class="col-12">
+                            <textarea id="commentText" class="form-control" rows="3" placeholder="Write your comment here..." required></textarea>
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-main">Post Comment</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="comment-list" id="commentList">
+                    <div class="comment-item">
+                        <div class="comment-meta"><strong>Visitor</strong> • Sample comment</div>
+                        <div class="comment-rating">★★★★★</div>
+                        <div>This page is clear, useful, and easy to understand.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-lg-5">
+                    <h5>About Trekking & Travel Nepal</h5>
+                    <p>
+                        Trekking & Travel Nepal is an informative guide website created to help users understand trekking routes, preparation, safety, and useful travel knowledge related to Nepal.
+                    </p>
+                    <div class="social-links mt-3">
+                        <a href="https://www.facebook.com/profile.php?id=61586323700582" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/chahana_craft/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6">
+                    <h5>Menu</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="trekking-guides.html">Trekking Guides</a></li>
+                        <li><a href="training.html">Training</a></li>
+                        <li><a href="safety.html">Safety</a></li>
+                        <li><a href="resources.html">Resources</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6">
+                    <h5>Contact Details</h5>
+                    <ul class="footer-contact">
+                        <li><i class="fas fa-envelope"></i>info@trekking-nepal.com</li>
+                        <li><i class="fas fa-phone"></i>+977-1-4123456</li>
+                        <li><i class="fas fa-location-dot"></i>Kathmandu, Nepal</li>
+                    </ul>
+                    <p class="mt-3">
+                        This website is designed for informative and educational use related to trekking in Nepal.
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="mb-0">
+                    &copy; 2026 <strong>Trekking & Travel Nepal</strong> | Informative Guide Website
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="row align-items-center g-3">
+            <div class="col-lg-8">
+                <strong>Cookie Notice:</strong>
+                This website uses cookies to improve the browsing experience, remember basic preferences, and support smoother page interaction.
+            </div>
+            <div class="col-lg-4 text-lg-end">
+                <button class="btn btn-outline-light btn-sm" id="rejectCookies">Reject</button>
+                <button class="btn btn-warning btn-sm ms-2" id="acceptCookies">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <button class="back-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        function setCookie(name, value, days) {
+            const date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            const expires = "expires=" + date.toUTCString();
+            document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/;SameSite=Lax";
+        }
+
+        function getCookie(name) {
+            const cookieName = name + "=";
+            const cookies = document.cookie.split(";");
+            for (let i = 0; i < cookies.length; i++) {
+                let c = cookies[i].trim();
+                if (c.indexOf(cookieName) === 0) {
+                    return decodeURIComponent(c.substring(cookieName.length, c.length));
+                }
+            }
+            return "";
+        }
+
+        $(document).ready(function () {
+            $(window).on("scroll", function () {
+                if ($(this).scrollTop() > 20) {
+                    $(".navbar").addClass("scrolled");
+                } else {
+                    $(".navbar").removeClass("scrolled");
+                }
+
+                if ($(this).scrollTop() > 300) {
+                    $("#backToTop").fadeIn();
+                } else {
+                    $("#backToTop").fadeOut();
+                }
+            });
+
+            $("#backToTop").on("click", function () {
+                $("html, body").animate({ scrollTop: 0 }, 700);
+            });
+
+            $(".counter").each(function () {
+                const $this = $(this);
+                const target = parseInt($this.attr("data-target"), 10);
+                let count = 0;
+                const increment = Math.max(1, Math.floor(target / 40));
+
+                const timer = setInterval(function () {
+                    count += increment;
+                    if (count >= target) {
+                        $this.text(target);
+                        clearInterval(timer);
+                    } else {
+                        $this.text(count);
+                    }
+                }, 40);
+            });
+
+            const consent = getCookie("siteCookieConsent");
+            if (!consent) {
+                $("#cookieBanner").addClass("show");
+            }
+
+            $("#acceptCookies").on("click", function () {
+                setCookie("siteCookieConsent", "accepted", 365);
+                $("#cookieBanner").removeClass("show");
+            });
+
+            $("#rejectCookies").on("click", function () {
+                setCookie("siteCookieConsent", "rejected", 365);
+                $("#cookieBanner").removeClass("show");
+            });
+
+            let selectedRating = 0;
+
+            function paintStars(value) {
+                $("#ratingStars i").each(function () {
+                    const starValue = parseInt($(this).data("value"));
+                    $(this).toggleClass("active", starValue <= value);
+                });
+            }
+
+            $("#ratingStars i").on("mouseenter", function () {
+                paintStars(parseInt($(this).data("value")));
+            });
+
+            $("#ratingStars").on("mouseleave", function () {
+                paintStars(selectedRating);
+            });
+
+            $("#ratingStars i").on("click", function () {
+                selectedRating = parseInt($(this).data("value"));
+                $("#commentRating").val(selectedRating);
+                paintStars(selectedRating);
+            });
+
+            $("#commentForm").on("submit", function (e) {
+                e.preventDefault();
+
+                const name = $("#commentName").val().trim();
+                const title = $("#commentTitle").val().trim();
+                const text = $("#commentText").val().trim();
+                const rating = parseInt($("#commentRating").val(), 10);
+
+                if (!name || !text || rating === 0) {
+                    alert("Please enter your name, comment, and rating.");
+                    return;
+                }
+
+                const stars = "★".repeat(rating) + "☆".repeat(5 - rating);
+                const heading = title ? title : "Visitor comment";
+
+                const newComment = `
+                    <div class="comment-item">
+                        <div class="comment-meta"><strong>${name}</strong> • ${heading}</div>
+                        <div class="comment-rating">${stars}</div>
+                        <div>${text}</div>
+                    </div>
+                `;
+
+                $("#commentList").prepend(newComment);
+                $("#commentForm")[0].reset();
+                selectedRating = 0;
+                paintStars(0);
+                $("#commentRating").val("0");
+            });
+        });
+    </script>
+</body>
+</html>
