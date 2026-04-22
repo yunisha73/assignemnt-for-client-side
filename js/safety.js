@@ -120,13 +120,31 @@ function updateChecklist() {
 }
 
 function setupChecklist() {
-  elements.checklistButtons.forEach(button => {
-    button.addEventListener('click', () => {
-      button.classList.toggle('active');
+  const items = document.querySelectorAll('.check-item');
+
+  const saved = JSON.parse(localStorage.getItem('checklist')) || [];
+
+  items.forEach(item => {
+    if (saved.includes(item.dataset.item)) {
+      item.classList.add('active');
+    }
+
+    item.addEventListener('click', () => {
+      item.classList.toggle('active');
+
+      const selected = Array.from(items)
+        .filter(i => i.classList.contains('active'))
+        .map(i => i.dataset.item);
+
+      localStorage.setItem('checklist', JSON.stringify(selected));
+
       updateChecklist();
     });
   });
+  updateChecklist(); 
 }
+
+   
 
 function setupChecklistButton() {
   if (!elements.checklistBtn || elements.checklistButtons.length === 0) return;
@@ -175,13 +193,15 @@ function setupDetailsToggle() {
 function setupPlayButton() {
   if (!elements.playBtn || !elements.rescueVideo) return;
 
-  elements.playBtn.addEventListener('click', () => {
-    if (elements.rescueVideo.paused) {
-      elements.rescueVideo.play();
-      elements.playBtn.textContent = 'Pause video';
+  $('#playBtn').click(function () {
+    const video = $('#rescueVideo')[0];
+
+    if (video.paused) {
+      video.play();
+      $(this).text('Pause video');
     } else {
-      elements.rescueVideo.pause();
-      elements.playBtn.textContent = 'Play video';
+      video.pause();
+      $(this).text('Play video');
     }
   });
 }
@@ -211,3 +231,4 @@ function initializeApp() {
 document.addEventListener('DOMContentLoaded', initializeApp);
 window.addEventListener('scroll', revealOnScroll);
 setInterval(refreshTime, 1000);
+
